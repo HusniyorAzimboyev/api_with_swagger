@@ -17,8 +17,8 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 class Rating(models.Model):
-    product = models.ForeignKey(Product, related_name='ratings', on_delete=models.CASCADE)
-    rating = models.DecimalField(max_digits=2, decimal_places=1, choices=[(i, str(i)) for i in range(1, 6)])
+    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
+    rating = models.SmallIntegerField(choices=[(i,f'{i}') for i in range(1, 6)])
     review = models.TextField(blank=True, null=True)
 
     def __str__(self):
